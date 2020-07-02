@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>Repos</title>
+</head>
+<body>
+<h1>Repos</h1>
+<div id="container">
+</body>
+<script>
+var user = "alyssadev";
+
+$(function() {
+	$("h1").html("Repos on <a href='https://github.com/" + user + "'>" + user + "</a>");
+	$.getJSON("https://api.github.com/users/" + user + "/repos", function(resp) {
+		$.each(resp, function(item) {
+			$("<div/>", {
+				"class": "repo",
+				"id": item.id
+			}).appendTo("#container");
+			$("<span>" + item.full_name + "</span>").appendTo("#" + item.id);
+		});
+	});
+});
+
+</script>
+</html>
