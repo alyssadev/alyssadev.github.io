@@ -15,6 +15,7 @@ $(function() {
 	$.getJSON("https://api.github.com/users/" + user + "/repos", function(resp) {
 		$.each(resp, function(item) {
 			div = $("<div class='repo' data-uri='" + item.html_url + "'>");
+			$("#container").append(div);
 		});
 	});
 });
