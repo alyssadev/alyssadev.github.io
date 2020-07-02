@@ -14,11 +14,7 @@ $(function() {
 	$("h1").html("Repos on <a href='https://github.com/" + user + "'>" + user + "</a>");
 	$.getJSON("https://api.github.com/users/" + user + "/repos", function(resp) {
 		$.each(resp, function(item) {
-			$("<div/>", {
-				"class": "repo",
-				"id": item.id
-			}).appendTo("#container");
-			$("<span>" + item.full_name + "</span>").appendTo("#" + item.id);
+			div = $("<div class='repo' data-uri='" + item.html_url + "'>");
 		});
 	});
 });
