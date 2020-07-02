@@ -13,8 +13,8 @@ var user = "alyssadev";
 $(function() {
 	$("h1").html("Repos on <a href='https://github.com/" + user + "'>" + user + "</a>");
 	$.getJSON("https://api.github.com/users/" + user + "/repos", function(resp) {
-		$.each(resp, function(item) {
-			div = $("<div class='repo' data-uri='" + item.html_url + "'>");
+		$.each(resp, function(i) {
+			div = $("<div class='repo' id='" + resp[i].id + "'><span class='full_name'><a href='" + resp[i].html_url + "'>" + resp[i].full_name + "</a></span></div>");
 			$("#container").append(div);
 		});
 	});
